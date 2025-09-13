@@ -1,0 +1,38 @@
+.select-language{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
+
+.header{
+    display: flex;
+    flex-direction: column;
+}
+
+.select-language > h2 {
+    font-size: 1.6rem;
+    text-align: center;
+}
+
+.language-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.lng-btn {
+    font-size: 1.5rem;
+    width: 200px;
+    height: 50px;
+    margin: 0.4rem;
+    padding: 0.3rem;
+    cursor: pointer;
+    background-color: rgb(245, 218, 184);
+    border-radius: 5px 12px 5px 12px;
+    border: none;
+    box-shadow: 10px 10px 5px lightblue;
+}
+
