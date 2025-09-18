@@ -3,6 +3,7 @@ import "./PatientContext.css";
 import { LanguageContext } from "./LanguageContext";
 import male from "./media/male.png";
 import female from "./media/female.png";
+import AudioRec from "./AudioRec";
 
 export const PatientContext = createContext();
 
@@ -11,9 +12,10 @@ export const PatientProvider = ({children}) => {
     const [isMale, setIsMale] = useState(null);
     const [submit, setSubmit] = useState(false)
     const [notification, setNotification] = useState("");
+    const [mediHistory, setMediHistory] = useState("");
+    const [pastAudioURL, setPastAudioURL] = useState(null);
     
     const {language, changeLanguage} = useContext(LanguageContext);
-
 
     const genderClick = (e) => {
         if (e.target.value === "male") {
@@ -60,7 +62,7 @@ export const PatientProvider = ({children}) => {
                     <div className="notification">{notification}</div>
                 )}
                 <div className="language-swtich">
-                    <button onClick={() => changeLanguage(language === "English" ? "Hindi": "English")}>{language === "English" ? "भाषा हिंदी में बदलें": "Continue in English"}</button>
+                    <button id="lang-switch-btn" onClick={() => changeLanguage(language === "English" ? "Hindi": "English")}>{language === "English" ? "भाषा हिंदी में बदलें": "Continue in English"}</button>
                 </div>
                 <div className="header">
                     <h1>{language === "English" ? "Pocket Doctor": "पॉकेट डॉक्टर"}</h1>
@@ -86,6 +88,15 @@ export const PatientProvider = ({children}) => {
                 <img src={female} width={60} alt="Female" />
                 <span>{language === "English" ? "Female" : "महिला"}</span>
                 </button>
+                <textarea
+                    placeholder={language === "English" ? "Describe your past medical problems here... (Optional)" : "अपनी पूर्व चिकित्सा समस्याओं का वर्णन करें... (वैकल्पिक)"}
+                    value={mediHistory}
+                    onChange={(e) => setMediHistory(e.target.value)}
+                    rows="4"
+                />
+                <p className="directive">{language === "English" ? "Or Tell Your Problem.": "या अपनी समस्या बताएं."}</p>
+                <AudioRec onAudioURLChange={setPastAudioURL} language={language} />
+                {pastAudioURL && <audio className="audio-player" controls src={pastAudioURL} />}
                 <button className="submit-btn" disabled={!age || isMale === null} onClick={handleSubmit}>
                     {language === "English" ? "Submit" : "सबमिट करें"}
                 </button>
@@ -106,7 +117,7 @@ export const PatientProvider = ({children}) => {
     }
 
     return (
-        <PatientContext.Provider value={{age,isMale, changeAge, changeGender}}>
+        <PatientContext.Provider value={{age,isMale,mediHistory, pastAudioURL, changeAge, changeGender}}>
             {children}
         </PatientContext.Provider>
     )

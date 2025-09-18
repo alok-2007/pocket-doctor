@@ -1,13 +1,17 @@
 import './App.css';
 import {LanguageProvider} from "./components/LanguageContext";
 import {PatientProvider} from "./components/PatientContext";
+import { ProblemProvider } from './components/ProblemContext';
+import  {Home} from './components/Home';
 
 function App() {
   return (
     <LanguageProvider >
-      <PatientProvider>
-
-      </PatientProvider>
+        <PatientProvider>
+          <ProblemProvider>
+            <Home />
+          </ProblemProvider>
+        </PatientProvider>
     </LanguageProvider>
   )
 }

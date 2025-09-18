@@ -1,11 +1,89 @@
-.patient-info {
+.patient-info, .problem {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 80vh;
     padding: 20px;
     text-align: center;
+}
+
+textarea{
+    font-size: 16px;
+    border: 1px solid black;
+    border-radius: 8px;
+    resize: none;
+    width: 50%;
+    padding: 0.2rem;
+}
+
+.patient-data {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+#problem-img {
+    display: none;
+}
+
+.audio-player {
+    margin-top: 1rem;
+    width: 300px;
+    border-radius: 8px;
+}
+
+.preview-img-div {
+    border: 1px solid black;
+    padding: 0.2rem;
+    border-radius: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 1rem;
+}
+
+.preview-img-container {
+    position: relative;
+    display: inline-block;
+}
+.remove-img-btn {
+    position: absolute;
+    top: 15px;
+    right: 0;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.preview-img {
+    width: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+#problem-ref-btn {
+    background-color: rgb(19, 241, 23);
+    margin-top: 1rem;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px; 
+    cursor: pointer;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .header {
@@ -13,7 +91,7 @@
 }
 
 .header h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     color: #2c3e50;
 }
 
@@ -79,10 +157,14 @@ label {
     margin-bottom: 20px;
 }
 
-.language-switch button {
-    background-color: #2ecc71;
-    color: white;
-    width: 220px;
+#lang-switch-btn {
+    background-color: #d4c753;
+    padding: 0.2rem;
+    padding-left: 0.3rem;
+    padding-right: 0.3rem;
+    font-size: 1.2rem;
+    color: black;
+    min-width: 120px;
 }
 
 .language-switch button:hover {
@@ -111,3 +193,9 @@ label {
     font-size: 1rem;
 }
 
+@media screen and (max-width: 765px) {
+  textarea {
+    width: 90%;
+    font-size: 18px;
+  }
+}
